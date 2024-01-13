@@ -1,0 +1,170 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-viteproject-dev-222032-authRole",
+      "UnauthRoleArn": "arn:aws:iam::603034282678:role/amplify-viteproject-dev-222032-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::603034282678:role/amplify-viteproject-dev-222032-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-viteproject-dev-222032-deployment",
+      "UnauthRoleName": "amplify-viteproject-dev-222032-unauthRole",
+      "StackName": "amplify-viteproject-dev-222032",
+      "StackId": "arn:aws:cloudformation:us-east-1:603034282678:stack/amplify-viteproject-dev-222032/0e7e45c0-a9e7-11ee-b73d-0aeb6d6119cb",
+      "AmplifyAppId": "d2bequgzgkek97",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    }
+  },
+  "auth": {
+    "viteproject6ace8280": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/auth/viteproject6ace8280-cloudformation-template.json",
+        "logicalId": "authviteproject6ace8280"
+      },
+      "lastPushTimeStamp": "2024-01-03T03:37:44.258Z",
+      "output": {
+        "UserPoolId": "us-east-1_puTgHjVKb",
+        "AppClientIDWeb": "3cvph1isrqmtejqv452q29irpd",
+        "AppClientID": "3m36322uk6ra9ee32g7al56fvc",
+        "IdentityPoolId": "us-east-1:95022093-5102-4955-8878-839892ccf260",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:603034282678:userpool/us-east-1_puTgHjVKb",
+        "IdentityPoolName": "viteproject6ace8280_identitypool_6ace8280__dev",
+        "UserPoolName": "viteproject6ace8280_userpool_6ace8280"
+      },
+      "lastPushDirHash": "OI61HrhaXkmYkLvZdia7tSguMcM="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "viteproject6ace8280",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2024-01-03T03:37:44.258Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {
+        "userGroupRole": "arn:aws:iam::603034282678:role/us-east-1_puTgHjVKb-userGroupRole",
+        "dealerGroupRole": "arn:aws:iam::603034282678:role/us-east-1_puTgHjVKb-dealerGroupRole",
+        "adminGroupRole": "arn:aws:iam::603034282678:role/us-east-1_puTgHjVKb-adminGroupRole"
+      },
+      "lastPushDirHash": "JcsfbInB7EwAdm6ovt7kfOjs3k0="
+    }
+  },
+  "function": {
+    "viteprojectabbf7d5e": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [],
+      "lastBuildTimeStamp": "2024-01-03T03:28:50.723Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2024-01-03T03:28:50.762Z",
+      "distZipFilename": "viteprojectabbf7d5e-37766e72733633544248-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-viteproject-dev-222032-deployment",
+        "s3Key": "amplify-builds/viteprojectabbf7d5e-37766e72733633544248-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/function/viteprojectabbf7d5e-cloudformation-template.json",
+        "logicalId": "functionviteprojectabbf7d5e"
+      },
+      "lastPushTimeStamp": "2024-01-03T03:37:43.420Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::603034282678:role/viteprojectLambdaRole54e74f4b-dev",
+        "Region": "us-east-1",
+        "Arn": "arn:aws:lambda:us-east-1:603034282678:function:viteprojectabbf7d5e-dev",
+        "Name": "viteprojectabbf7d5e-dev",
+        "LambdaExecutionRole": "viteprojectLambdaRole54e74f4b-dev"
+      },
+      "lastPushDirHash": "yzOmETfYhtzkq85m84oVLAEaKxE="
+    }
+  },
+  "api": {
+    "amplifyapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "viteprojectabbf7d5e",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "viteproject6ace8280",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "userPoolGroups",
+          "attributes": [
+            "adminGroupRole"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "userPoolGroups",
+          "attributes": [
+            "userGroupRole"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "userPoolGroups",
+          "attributes": [
+            "dealerGroupRole"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/api/amplifyapi-cloudformation-template.json",
+        "logicalId": "apiamplifyapi"
+      },
+      "lastPushTimeStamp": "2024-01-03T03:37:44.258Z",
+      "output": {
+        "ApiName": "amplifyapi",
+        "RootUrl": "https://tc6i5lggng.execute-api.us-east-1.amazonaws.com/dev",
+        "ApiId": "tc6i5lggng"
+      },
+      "lastPushDirHash": "l91d4Z+tkJDyL9d6eJ+5JA2JZ+g="
+    }
+  }
+}

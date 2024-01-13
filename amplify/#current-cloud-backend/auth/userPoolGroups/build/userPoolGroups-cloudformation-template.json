@@ -1,0 +1,237 @@
+{
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.8.2\",\"stackType\":\"auth-Cognito-UserPool-Groups\",\"metadata\":{}}",
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "env": {
+      "Type": "String"
+    },
+    "AuthRoleArn": {
+      "Type": "String"
+    },
+    "UnauthRoleArn": {
+      "Type": "String"
+    },
+    "authviteproject6ace8280UserPoolId": {
+      "Type": "String",
+      "Default": "authviteproject6ace8280UserPoolId"
+    },
+    "authviteproject6ace8280IdentityPoolId": {
+      "Type": "String",
+      "Default": "authviteproject6ace8280IdentityPoolId"
+    },
+    "authviteproject6ace8280AppClientID": {
+      "Type": "String",
+      "Default": "authviteproject6ace8280AppClientID"
+    },
+    "authviteproject6ace8280AppClientIDWeb": {
+      "Type": "String",
+      "Default": "authviteproject6ace8280AppClientIDWeb"
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "adminGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "authviteproject6ace8280UserPoolId"
+        },
+        "Description": "override success",
+        "GroupName": "admin",
+        "Precedence": 1,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "adminGroupRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "adminGroupRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "authviteproject6ace8280IdentityPoolId"
+                  }
+                },
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated"
+                }
+              }
+            }
+          ]
+        },
+        "RoleName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "authviteproject6ace8280UserPoolId"
+              },
+              "-adminGroupRole"
+            ]
+          ]
+        }
+      }
+    },
+    "userGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "authviteproject6ace8280UserPoolId"
+        },
+        "Description": "override success",
+        "GroupName": "user",
+        "Precedence": 2,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "userGroupRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "userGroupRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "authviteproject6ace8280IdentityPoolId"
+                  }
+                },
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated"
+                }
+              }
+            }
+          ]
+        },
+        "RoleName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "authviteproject6ace8280UserPoolId"
+              },
+              "-userGroupRole"
+            ]
+          ]
+        }
+      }
+    },
+    "dealerGroup": {
+      "Type": "AWS::Cognito::UserPoolGroup",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "authviteproject6ace8280UserPoolId"
+        },
+        "Description": "override success",
+        "GroupName": "dealer",
+        "Precedence": 3,
+        "RoleArn": {
+          "Fn::GetAtt": [
+            "dealerGroupRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "dealerGroupRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "",
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "authviteproject6ace8280IdentityPoolId"
+                  }
+                },
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated"
+                }
+              }
+            }
+          ]
+        },
+        "RoleName": {
+          "Fn::Join": [
+            "",
+            [
+              {
+                "Ref": "authviteproject6ace8280UserPoolId"
+              },
+              "-dealerGroupRole"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "adminGroupRole": {
+      "Value": {
+        "Fn::GetAtt": [
+          "adminGroupRole",
+          "Arn"
+        ]
+      }
+    },
+    "userGroupRole": {
+      "Value": {
+        "Fn::GetAtt": [
+          "userGroupRole",
+          "Arn"
+        ]
+      }
+    },
+    "dealerGroupRole": {
+      "Value": {
+        "Fn::GetAtt": [
+          "dealerGroupRole",
+          "Arn"
+        ]
+      }
+    }
+  }
+}

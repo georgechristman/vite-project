@@ -1,0 +1,31 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-viteproject-dev-222032-authRole",
+      "UnauthRoleArn": "arn:aws:iam::603034282678:role/amplify-viteproject-dev-222032-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::603034282678:role/amplify-viteproject-dev-222032-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-viteproject-dev-222032-deployment",
+      "UnauthRoleName": "amplify-viteproject-dev-222032-unauthRole",
+      "StackName": "amplify-viteproject-dev-222032",
+      "StackId": "arn:aws:cloudformation:us-east-1:603034282678:stack/amplify-viteproject-dev-222032/0e7e45c0-a9e7-11ee-b73d-0aeb6d6119cb",
+      "AmplifyAppId": "d2bequgzgkek97",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-viteproject-dev-222032-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "viteproject6ace8280": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "viteprojectabbf7d5e": {
+          "deploymentBucketName": "amplify-viteproject-dev-222032-deployment",
+          "s3Key": "amplify-builds/viteprojectabbf7d5e-37766e72733633544248-build.zip"
+        }
+      },
+      "api": {
+        "amplifyapi": {}
+      }
+    }
+  }
+}

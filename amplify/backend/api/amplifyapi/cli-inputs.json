@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "paths": {
+    "/book/{isbn}": {
+      "name": "/book/{isbn}",
+      "lambdaFunction": "viteprojectabbf7d5e",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "groups": {
+          "admin": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ],
+          "user": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
+      }
+    },
+    "/dealer": {
+      "name": "/dealer",
+      "lambdaFunction": "viteprojectabbf7d5e",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "groups": {
+          "admin": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ],
+          "dealer": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        }
+      }
+    }
+  }
+}
